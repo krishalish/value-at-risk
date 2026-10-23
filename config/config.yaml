@@ -1,0 +1,57 @@
+# Database Configuration
+database:
+  type: sqlite
+  path: data/var_history.db
+
+# Data Validation Parameters
+data_validation:
+  min_data_points: 252  # Minimum required data points
+  max_missing_pct: 0.05  # Maximum allowed percentage of missing values
+  outlier_std_threshold: 3.0  # Number of standard deviations for outlier detection
+
+# VaR Calculation Parameters
+var_calculation:
+  confidence_levels: [0.95, 0.99]
+  time_horizons: [1, 10, 22]
+  simulation_runs: 10000  # For Monte Carlo simulation
+  garch_params:
+    p: 1
+    q: 1
+    mean: "constant"
+    vol: "GARCH"
+    dist: "normal"
+
+# Risk Monitoring Parameters
+monitoring:
+  violation_window: 252  # Days to consider for violation ratio
+  drift_detection:
+    window_size: 63  # Rolling window for drift detection
+    z_score_threshold: 2.0  # Threshold for drift detection
+
+# Reporting Configuration
+reporting:
+  schedule:
+    daily_report: "17:00"  # Time for daily report generation
+    weekly_report: "Friday 17:00"
+  formats: ["pdf", "excel"]
+  email:
+    enabled: false
+    smtp_server: ""
+    port: 587
+    sender: ""
+    recipients: []
+
+# API Configuration
+api:
+  host: "0.0.0.0"
+  port: 8000
+  rate_limit: 100  # Requests per minute
+  timeout: 30  # Seconds
+
+# Logging Configuration
+logging:
+  level: INFO
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: logs/var_system.log
+  max_size: 10485760  # 10MB
+  backup_count: 5 
