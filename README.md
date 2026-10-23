@@ -69,9 +69,9 @@ Each method is estimated on the previous $n = 500$ days:
 | method | VaR | assumption |
 |---|---|---|
 | Historical simulation | $-\hat q_{1-c}(r_{t-n}, \dots, r_{t-1})$ | the past window is a fair sample of tomorrow |
-| Parametric normal | $z_c\,\hat\sigma - \hat\mu$ | returns are normal |
+| Parametric normal | $z_c \hat\sigma - \hat\mu$ | returns are normal |
 | Monte Carlo | $-\hat q_{1-c}$ of 10,000 draws $w^\top \mathbf r$, with $\mathbf r \sim N(\hat{\boldsymbol\mu}, \hat\Sigma)$ | the stocks are jointly normal |
-| GARCH(1,1) | $z_c\,\hat\sigma_{t\mid t-1} - \hat\mu$, where $\sigma_t^2 = \omega + \alpha\,\varepsilon_{t-1}^2 + \beta\,\sigma_{t-1}^2$ | volatility changes over time; shocks are normal |
+| GARCH(1,1) | $z_c \hat\sigma_{t\mid t-1} - \hat\mu$, where $\sigma_t^2 = \omega + \alpha \varepsilon_{t-1}^2 + \beta \sigma_{t-1}^2$ | volatility changes over time; shocks are normal |
 
 Here $z_c$ is the standard normal quantile (1.645 at 95%, 2.326 at 99%).
 
